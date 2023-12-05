@@ -1,10 +1,14 @@
 import Header from "./common/components/Header/Header";
+import MenuList from "./modules/menu/components/menu-list";
+import pizzaMenu from "./mocks/pizza.json";
+import Footer from "./common/components/Footer/Footer";
 
 function App() {
   return (
     <>
-      <Header></Header>
-      <h1 className="text-green-500">PizzaStack</h1>
+      <Header/>
+      <MenuList items={pizzaMenu}/>
+      <Footer/>
     </>
   );
 }

@@ -1,11 +1,17 @@
-import pizzaMenu from "../../../mocks/pizza.json";
-import MenuItem from "./menu-item";
 
-const MenuList = () => {
+import MenuItem from "./menu-item";
+import { Pizza } from "./types/pizza";
+import { FC } from "react";
+
+interface MenuListProps {
+  items: Pizza[];
+}
+
+const MenuList: FC<MenuListProps> = ({ items }) => {
   return (
-    <div className="flex flex-wrap gap-10 justify-center">
-      {pizzaMenu.map(({ image, ...pizza }) => (
-        <MenuItem {...pizza} imagePath={"/assets/pizza/" + image} />
+    <div className="flex flex-wrap gap-10 justify-center pt-20 pb-16">
+      {items.map(({ image, ...pizza }) => (
+        <MenuItem {...pizza} imagePath={"/assets/pizza/" + image} key={`pizza-${pizza.id}`} />
       ))}
     </div>
   );
