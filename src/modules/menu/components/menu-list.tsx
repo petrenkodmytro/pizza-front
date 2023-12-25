@@ -1,6 +1,5 @@
-
 import MenuItem from "./menu-item";
-import { Pizza } from "./types/pizza";
+import { Pizza } from "../types/pizza";
 import { FC } from "react";
 
 interface MenuListProps {
@@ -11,7 +10,7 @@ const MenuList: FC<MenuListProps> = ({ items }) => {
   return (
     <div className="flex flex-wrap gap-10 justify-center pt-20 pb-16">
       {items.map(({ image, ...pizza }) => (
-        <MenuItem {...pizza} imagePath={"/assets/pizza/" + image} key={`pizza-${pizza.id}`} />
+        <MenuItem {...pizza} image={image} key={`pizza-${pizza.id}`} />
       ))}
     </div>
   );
