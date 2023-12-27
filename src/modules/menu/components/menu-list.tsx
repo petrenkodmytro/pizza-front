@@ -1,9 +1,9 @@
 import MenuItem from "./menu-item";
-import { Pizza } from "../types/pizza";
 import { FC } from "react";
+import { Menu } from "@app/core/types";
 
 interface MenuListProps {
-  items: Pizza[];
+  items: Menu[];
 }
 
 const MenuList: FC<MenuListProps> = ({ items }) => {
