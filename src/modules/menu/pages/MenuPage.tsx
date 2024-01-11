@@ -5,7 +5,7 @@ import ShowInfo from "@app/common/components/show-info/show-info";
 
 const MenuPage = () => {
   const { data, loading, error } = useGetMenuQuery();
-
+console.log(error)
   if (error) {
     return (
       <ShowInfo type="error">

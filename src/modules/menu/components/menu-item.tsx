@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { AdvancedImage } from "@cloudinary/react";
-import { cloudinary } from "@app/core/cloudinary";
+import { useCloudinaryImage } from "@app/common/components/hooks/use-cloudinary-image.hook";
 
 interface MenuItemProps {
   image: string;
@@ -8,12 +8,16 @@ interface MenuItemProps {
   title: string;
   ingredients?: string | null;
   price: number;
+  fitImage?: boolean
 }
 
-const MenuItem: FC<MenuItemProps> = ({ image, weight, title, ingredients, price }) => {
-  const imageCld = cloudinary.image(image);
-  // const transformations = ["w_384", "h_240", "dpr_2.0"];
-  imageCld.addTransformation("w_384, h_240, dpr_2");
+const MenuItem: FC<MenuItemProps> = ({ image, weight, title, ingredients, price, fitImage }) => {
+  const transfomations = ['w_384', 'h_240'];
+  if (fitImage) {
+    transfomations.unshift('c_pad');
+  }
+
+  const imageCld = useCloudinaryImage(image, transfomations);
 
   return (
     <div className="w-72 lg:w-96 shadow-xl rounded-2xl bg-white flex flex-col">
