@@ -1,5 +1,5 @@
-import Header from "./common/components/header/Header";
-import Footer from "./common/components/footer/Footer";
+import Header from "./common/components/headerp/Header";
+import Footer from "./common/components/footerp/Footer";
 import MenuPage from "./modules/menu/pages/MenuPage";
 
 function App() {

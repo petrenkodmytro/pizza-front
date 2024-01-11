@@ -1,7 +1,5 @@
 overwrite: true
 schema: http://localhost:8080/v1/graphql
-# https://assuring-kodiak-14.hasura.app/v1/graphql
-# http://localhost:8080/v1/graphql
 documents: src/core/graphql/*.gql
 generates:
   src/core/types.ts:
