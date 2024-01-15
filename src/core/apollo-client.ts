@@ -1,8 +1,7 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { config } from "./config";
 
 export const apolloClient = new ApolloClient({
-  uri: "https://assuring-kodiak-14.hasura.app/v1/graphql",
-  // https://assuring-kodiak-14.hasura.app/v1/graphql
-  // http://localhost:8080/v1/graphql
+  uri: config.hasuraEndpoint,
   cache: new InMemoryCache(),
 });
