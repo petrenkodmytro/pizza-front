@@ -251,6 +251,41 @@ export const GetMenuDocument = gql`
   }
 `;
 
+/** aggregate fields of "menu" */
+export type Menu_Aggregate_Fields = {
+  __typename?: 'menu_aggregate_fields';
+  avg?: Maybe<Menu_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Menu_Max_Fields>;
+  min?: Maybe<Menu_Min_Fields>;
+  stddev?: Maybe<Menu_Stddev_Fields>;
+  stddev_pop?: Maybe<Menu_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Menu_Stddev_Samp_Fields>;
+  sum?: Maybe<Menu_Sum_Fields>;
+  var_pop?: Maybe<Menu_Var_Pop_Fields>;
+  var_samp?: Maybe<Menu_Var_Samp_Fields>;
+  variance?: Maybe<Menu_Variance_Fields>;
+};
+
+/** aggregated selection of "menu" */
+export type Menu_Aggregate = {
+  __typename?: 'menu_aggregate';
+  aggregate?: Maybe<Menu_Aggregate_Fields>;
+  nodes: Array<Menu>;
+};
+
+/** columns and relationships of "categories" */
+export type Categories = {
+  __typename?: 'categories';
+  id: Scalars['uuid'];
+  /** An array relationship */
+  menu_items: Array<Menu>;
+  /** An aggregate relationship */
+  menu_items_aggregate: Menu_Aggregate;
+  slug: Scalars['String'];
+  title: Scalars['String'];
+};
+
 /**
  * __useGetMenuQuery__
  *
@@ -282,3 +317,50 @@ export type GetMenuQueryHookResult = ReturnType<typeof useGetMenuQuery>;
 export type GetMenuLazyQueryHookResult = ReturnType<typeof useGetMenuLazyQuery>;
 export type GetMenuSuspenseQueryHookResult = ReturnType<typeof useGetMenuSuspenseQuery>;
 export type GetMenuQueryResult = Apollo.QueryResult<GetMenuQuery, GetMenuQueryVariables>;
+
+
+//----
+
+export type GetCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCategoriesQuery = { __typename?: 'query_root', categories: Array<{ __typename?: 'categories', id: any, slug: string, title: string }> };
+
+export type GetCustomerDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+export const GetCategoriesDocument = gql`
+    query GetCategories {
+  categories {
+    id
+    slug
+    title
+  }
+}`;
+
+/**
+ * __useGetCategoriesQuery__
+ *
+ * To run a query within a React component, call `useGetCategoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCategoriesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<GetCategoriesQuery, GetCategoriesQueryVariables>) {
+  const options = {...defaultOptions, ...baseOptions}
+  return Apollo.useQuery<GetCategoriesQuery, GetCategoriesQueryVariables>(GetCategoriesDocument, options);
+}
+export function useGetCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCategoriesQuery, GetCategoriesQueryVariables>) {
+    const options = {...defaultOptions, ...baseOptions}
+    return Apollo.useLazyQuery<GetCategoriesQuery, GetCategoriesQueryVariables>(GetCategoriesDocument, options);
+  }
+export type GetCategoriesQueryHookResult = ReturnType<typeof useGetCategoriesQuery>;
+export type GetCategoriesLazyQueryHookResult = ReturnType<typeof useGetCategoriesLazyQuery>;
+export type GetCategoriesQueryResult = Apollo.QueryResult<GetCategoriesQuery, GetCategoriesQueryVariables>;
+

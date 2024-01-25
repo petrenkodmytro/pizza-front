@@ -4,8 +4,9 @@ import MenuListLoading from "@app/modules/menu/components/menu-list-loading";
 import ShowInfo from "@app/common/components/show-info/show-info";
 
 const MenuPage = () => {
+  // fetch data from bekend
   const { data, loading, error } = useGetMenuQuery();
-console.log(error)
+  // console.log(error);
   if (error) {
     return (
       <ShowInfo type="error">

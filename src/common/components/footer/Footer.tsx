@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <>
-      <div className="bg-gray-900 p-12 mt-auto">
+      <footer className="bg-gray-900 p-12 mt-auto">
         <div>
           <div className="mb-4">
             <span className="uppercase font-bold text-sm text-zinc-500">Контакти</span>
@@ -25,8 +25,8 @@ const Footer = () => {
             <span className="text-xl font-semibold text-white">🍕 PizzaStack</span>
           </div>
         </div>
-      </div>
-      <p className="text-center italic">Developed by Dmytro Petrenko</p>
+      </footer>
+      <a href="https://github.com/petrenkodmytro" className=" hover:text-blue-900 hover:underline text-center italic">Developed by Dmytro Petrenko</a>
     </>
   );
 };

@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { GiShoppingCart } from "react-icons/gi";
 import { AdvancedImage } from "@cloudinary/react";
 import { useCloudinaryImage } from "@app/common/components/hooks/use-cloudinary-image.hook";
 
@@ -12,7 +13,7 @@ interface MenuItemProps {
 }
 
 const MenuItem: FC<MenuItemProps> = ({ image, weight, title, ingredients, price }) => {
-  const transfomations = ["c_auto", "w_384", "h_240"];
+  const transfomations = ["c_auto", "w_384", "h_240", "dpr_2.0"];
 
   const imageCld = useCloudinaryImage(image, transfomations);
 
@@ -32,7 +33,10 @@ const MenuItem: FC<MenuItemProps> = ({ image, weight, title, ingredients, price 
         </div>
         <div className="flex justify-between items-center flex-col gap-3 sm:flex-row">
           <span className="text-xl font-semibold">{price} грн.</span>
-          <button>Кошик</button>
+          <button className="flex justify-between items-center gap-1">
+            <GiShoppingCart />
+            Кошик
+          </button>
         </div>
       </div>
     </div>

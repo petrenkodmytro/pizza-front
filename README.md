@@ -1,7 +1,7 @@
 # PizzaStack front
 
 ## terminal
-npm run codegen - generetion types (types.ts)
+npm run codegen - generetion types (types.ts) from codegen.yml
 
 - change uri: "https://assuring-kodiak-14.hasura.app/v1/graphql" in apollo-client file
 
