@@ -7,7 +7,7 @@ interface SkeletonProps {
   roundFull?: boolean;
 }
 
-export const Skeleton: FC<SkeletonProps> = ({ width, height, roundFull = true }) => {
+const Skeleton: FC<SkeletonProps> = ({ width, height, roundFull = true }) => {
   const classes = clsx("bg-gray-200 animate-pulse", {
     "rounded-full": roundFull,
     "rounded-md": !roundFull,
@@ -15,3 +15,5 @@ export const Skeleton: FC<SkeletonProps> = ({ width, height, roundFull = true })
 
   return <div className={classes} style={{ width, height }} />;
 };
+
+export default Skeleton;

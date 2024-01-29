@@ -4,7 +4,7 @@ interface HeaderCategoryLinkProps {
   url: string;
 }
 
-export const HeaderCategoryLink: FC<PropsWithChildren<HeaderCategoryLinkProps>> = ({ url, children }) => {
+const HeaderCategoryLink: FC<PropsWithChildren<HeaderCategoryLinkProps>> = ({ url, children }) => {
   return (
     <a
       href={url}
@@ -13,3 +13,5 @@ export const HeaderCategoryLink: FC<PropsWithChildren<HeaderCategoryLinkProps>> 
     </a>
   );
 };
+
+export default HeaderCategoryLink;

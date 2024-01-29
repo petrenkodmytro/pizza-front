@@ -1,15 +1,15 @@
 import { Categories } from "@app/core/types";
-import { HeaderCategoryLink } from "@app/modules/menu/components/link";
-import { Skeleton } from "@app/modules/menu/components/skeleton";
+import HeaderCategoryLink from "@app/modules/menu/components/link";
+import Skeleton from "@app/modules/menu/components/skeleton";
 import { FC } from "react";
 
 interface HeaderProps {
   isLoading: boolean;
-  categories?: Omit<Categories, 'menu_items' | 'menu_items_aggregate'>[];
+  categories?: Omit<Categories, "menu_items" | "menu_items_aggregate">[];
 }
 const Header: FC<HeaderProps> = ({ isLoading, categories }) => {
   return (
-    <header className="h-12 shadow px-6 sm:mb-12 fixed w-full z-20 bg-white flex justify-between items-center">
+    <header className="h-12 shadow px-6  fixed w-full z-20 bg-white flex justify-between items-center">
       <div className="flex items-center h-full gap-3 flex-1">
         <a href="/">🍕 PizzaStack</a>
         {isLoading ? (

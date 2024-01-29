@@ -139,6 +139,7 @@ export type Menu = {
   __typename?: 'menu';
   /** An object relationship */
   category?: Maybe<Categories>;
+  category_id?: Maybe<Scalars['uuid']['output']>;
   id: Scalars['uuid']['output'];
   image: Scalars['String']['output'];
   ingredients: Scalars['String']['output'];
@@ -174,6 +175,7 @@ export type Menu_Bool_Exp = {
   _not?: InputMaybe<Menu_Bool_Exp>;
   _or?: InputMaybe<Array<Menu_Bool_Exp>>;
   category?: InputMaybe<Categories_Bool_Exp>;
+  category_id?: InputMaybe<Uuid_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   image?: InputMaybe<String_Comparison_Exp>;
   ingredients?: InputMaybe<String_Comparison_Exp>;
@@ -184,6 +186,7 @@ export type Menu_Bool_Exp = {
 
 /** order by max() on columns of table "menu" */
 export type Menu_Max_Order_By = {
+  category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   image?: InputMaybe<Order_By>;
   ingredients?: InputMaybe<Order_By>;
@@ -194,6 +197,7 @@ export type Menu_Max_Order_By = {
 
 /** order by min() on columns of table "menu" */
 export type Menu_Min_Order_By = {
+  category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   image?: InputMaybe<Order_By>;
   ingredients?: InputMaybe<Order_By>;
@@ -205,6 +209,7 @@ export type Menu_Min_Order_By = {
 /** Ordering options when selecting data from "menu". */
 export type Menu_Order_By = {
   category?: InputMaybe<Categories_Order_By>;
+  category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   image?: InputMaybe<Order_By>;
   ingredients?: InputMaybe<Order_By>;
@@ -215,6 +220,8 @@ export type Menu_Order_By = {
 
 /** select columns of table "menu" */
 export enum Menu_Select_Column {
+  /** column name */
+  CategoryId = 'category_id',
   /** column name */
   Id = 'id',
   /** column name */
@@ -257,6 +264,7 @@ export type Menu_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Menu_Stream_Cursor_Value_Input = {
+  category_id?: InputMaybe<Scalars['uuid']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   image?: InputMaybe<Scalars['String']['input']>;
   ingredients?: InputMaybe<Scalars['String']['input']>;
@@ -444,7 +452,7 @@ export type GetCategoriesQuery = { __typename?: 'query_root', categories: Array<
 export type GetMenuQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetMenuQuery = { __typename?: 'query_root', menu: Array<{ __typename?: 'menu', id: any, image: string, ingredients: string, price: any, title: string, weight: any }> };
+export type GetMenuQuery = { __typename?: 'query_root', categories: Array<{ __typename?: 'categories', id: any, slug: string, title: string, menu_items: Array<{ __typename?: 'menu', id: any, image: string, ingredients: string, price: any, title: string, weight: any, category_id?: any | null }> }> };
 
 
 export const GetCategoriesDocument = gql`
@@ -490,13 +498,19 @@ export type GetCategoriesSuspenseQueryHookResult = ReturnType<typeof useGetCateg
 export type GetCategoriesQueryResult = Apollo.QueryResult<GetCategoriesQuery, GetCategoriesQueryVariables>;
 export const GetMenuDocument = gql`
     query GetMenu {
-  menu {
+  categories {
     id
-    image
-    ingredients
-    price
+    slug
     title
-    weight
+    menu_items {
+      id
+      image
+      ingredients
+      price
+      title
+      weight
+      category_id
+    }
   }
 }
     `;

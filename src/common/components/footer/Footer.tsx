@@ -10,7 +10,7 @@ const Footer = () => {
             <ul>
               <li>
                 <a className="font-bold text-sm text-gray-400 hover:text-gray-300 hover:underline" href="tel:+380441234567">
-                  044 123 45 67
+                  057 123 45 67
                 </a>
               </li>
               <li>
