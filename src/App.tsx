@@ -5,7 +5,7 @@ import { useGetCategoriesQuery } from "./core/types";
 
 function App() {
   const { data, loading } = useGetCategoriesQuery();
-console.log(data);
+// console.log(data);
   return (
     <div className="flex flex-col min-h-screen">
       <Header isLoading = {loading} categories={data?.categories}/>

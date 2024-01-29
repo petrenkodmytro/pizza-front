@@ -1,3 +1,4 @@
+import { Categories } from "@app/core/types";
 import { HeaderCategoryLink } from "@app/modules/menu/components/link";
 import { Skeleton } from "@app/modules/menu/components/skeleton";
 import { FC } from "react";
